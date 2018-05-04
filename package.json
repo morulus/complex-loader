@@ -40,9 +40,17 @@
     "relink": "while read in; do npm link \"$in\"; done < .linked",
     "prepublishOnly": "jest --coverage && npm run build"
   },
-  "author": {
-    "name": "Morulus",
-    "email": "vladimirmorulus@gmail.com"
+  "author": "Morulus <vladimirmorulus@gmail.com>",
+  "license": "MIT",
+  "directories": {
+    "lib": "lib"
   },
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morulus/complex-loader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/morulus/complex-loader/issues"
+  },
+  "homepage": "https://github.com/morulus/complex-loader#readme"
 }
