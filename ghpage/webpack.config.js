@@ -1,7 +1,7 @@
 const path = require(`path`);
 const { ContextReplacementPlugin } = require(`webpack`);
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const BundleAnalyzerPlugin = require(`webpack-bundle-analyzer`).BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require(`webpack-bundle-analyzer`).BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require(`html-webpack-plugin`);
 const markdownRule = require(`./config/markdown.rule.js`);
 const EXPORT_DEFAULT_OPEN_CHUNK = `module.exports = {`;
@@ -75,8 +75,7 @@ module.exports = {
     }),
     new UglifyJsPlugin({
       test: /\.js($|\?)/i
-    }),
-    new BundleAnalyzerPlugin(),
+    })
   ],
   mode: `development`
 };

@@ -1,8 +1,8 @@
 {
   "name": "complex-loader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Webpack complex loader",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "invoke-loader": "^0.1.0",
     "loader-utils": "^1.1.0",
@@ -36,7 +36,7 @@
     "test": "jest --coverage",
     "build": "babel src/ --out-dir ./lib",
     "start": "./bin/start-page.sh",
-    "publishgp": "./bin/start-page.sh && gh-pages -d example/dist",
+    "publishgp": "./bin/build-page.sh && gh-pages -d ghpage/dist",
     "relink": "while read in; do npm link \"$in\"; done < .linked",
     "prepublishOnly": "jest --coverage && npm run build"
   },
