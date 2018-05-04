@@ -1,0 +1,6 @@
+node_modules
+./lib
+ghpage
+__tests__
+__mocks__
+./example
