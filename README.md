@@ -162,7 +162,6 @@ The loader has not yet been tested in all the nuances. The caching method has no
 
 For now there is few doubtful moments:
 
-- The function for generate loader unique id (`getPlayerUid`) is unreliable. Maybe there is a way to improve it?
 - Should I implement in-build nesting? For now you can created nested structures only by defining `complex-loader` again as child loader. But why not make support for nested objects? And how in this case to distinguish the nested object is a shape of the loader?
 - Support functional loaders. Now there is opportunity to pass directly the function as a loader, instead of the string. May it be in demand?
 - Caching options - it is good or bad? And what underwater rocks awaits us here?
