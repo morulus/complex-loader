@@ -171,7 +171,7 @@ Author and license
 
 Morulus <vladimirmorulus@gmail.com>
 
-Under [MIT](./LICENSE) license, 2018
+Under [MIT](https://github.com/morulus/complex-loader/blob/master/LICENSE) license, 2018
 
 See also
 --
