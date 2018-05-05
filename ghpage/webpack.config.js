@@ -47,6 +47,10 @@ module.exports = {
         ]
       },
       {
+        test: /\.html$/,
+        use: 'raw-loader'
+      },
+      {
         test: /\.png$/,
         exclude: /node_modules/,
         use: `file-loader`

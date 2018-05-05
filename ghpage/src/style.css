@@ -8,6 +8,11 @@ body, html {
   box-sizing: border-box;
 }
 
+#root {
+  height: 100vh;
+  overflow: hidden;
+}
+
 #slides {
   display: flex;
   overflow: hidden;
