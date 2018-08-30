@@ -16,6 +16,8 @@ const mockContext = {
   }
 }
 
+const invokePath = require.resolve(`../invoke.js`);
+
 const projectRoot = path.resolve(__dirname, '../')
 
 function cutSpaces(str) {
@@ -73,7 +75,7 @@ describe('Test pitch output', () => {
     const result = loader.pitch.call(
       context
     )
-    expect(cutSpaces(result)).toBe(`module.exports={[\"alfa\"]:require('!complex-loader/invoke?options=000000/0/loader-utils/ca1a41f90da606b052ecf10c8286817813bc8861&loader=${projectRoot}/node_modules/loader-utils/lib/index.js&cache!complex-loader/invoke?options=000000/1/jest/3a7c58594922037a57ade83233ac601f3239a806&loader=${projectRoot}/node_modules/jest/build/jest.js&cache!./index.js')}`);
+    expect(cutSpaces(result)).toBe(`module.exports={[\"alfa\"]:require('!${invokePath}?options=000000/0/loader-utils/ca1a41f90da606b052ecf10c8286817813bc8861&loader=${projectRoot}/node_modules/loader-utils/lib/index.js&cache!${invokePath}?options=000000/1/jest/3a7c58594922037a57ade83233ac601f3239a806&loader=${projectRoot}/node_modules/jest/build/jest.js&cache!./index.js')}`);
   });
 
   it('Loader is object, but without options', () => {
@@ -109,7 +111,7 @@ describe('Test pitch output', () => {
     const result = loader.pitch.call(
       context
     )
-    expect(cutSpaces(result)).toBe(`module.exports={[\"alfa\"]:require('!complex-loader/invoke?options=000000/alfa/loader-utils/f15f5ae913ceb372b2a3fcc536da3aa0735a6c2b&loader=${projectRoot}/node_modules/loader-utils/lib/index.js&cache!./index.js')}`);
+    expect(cutSpaces(result)).toBe(`module.exports={[\"alfa\"]:require('!${invokePath}?options=000000/alfa/loader-utils/f15f5ae913ceb372b2a3fcc536da3aa0735a6c2b&loader=${projectRoot}/node_modules/loader-utils/lib/index.js&cache!./index.js')}`);
   });
 });
 
