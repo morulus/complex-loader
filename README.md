@@ -29,7 +29,7 @@ The rule can be described as [inline](https://webpack.js.org/concepts/loaders/#i
 
 For example:
 ```js
-`yaml-loader!front-matter-loader?attributesOnly`
+`yaml-loader!front-matter-loader?onlyAttributes`
 ```
 
 Or as a plain object (similar to the [Webpack rule](https://webpack.js.org/concepts/loaders/#configuration) use property):
@@ -154,6 +154,14 @@ Install
 ```shell
 yarn add complex-loader --dev
 ```
+
+Versions
+--
+
+### 0.1.3
+
+- Fixed bug with complex-loader/invoke which required from the outside directory
+
 
 Issues and pre-release
 --

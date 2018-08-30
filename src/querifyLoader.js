@@ -1,6 +1,6 @@
-const resolve = require(`resolve`);
 const uuid4 = require(`uuid4`);
 const objectHash = require(`object-hash`);
+const resolve = require(`resolve`);
 
 /* DEPRECATED: I use unique values from loader I know to
    build unique for this loader id, but if
@@ -22,6 +22,8 @@ const objectHash = require(`object-hash`);
   /* Sha1 is fastesd way to get string hash, information based on article https://medium.com/@chris_72272/what-is-the-fastest-node-js-hashing-algorithm-c15c1a0e164e*/
 /* Return sha1(uid.join(`-`));
    } */
+
+const invokePath = require.resolve(`../invoke.js`);
 
 /*
 No matter what loader is, this function should return query string.
@@ -53,7 +55,7 @@ module.exports = function querifyLoader(use, key) {
         exports: options
       };
 
-      return `complex-loader/invoke?options=${propertyLoaderUid}&loader=${resolvedUse}&cache`;
+      return `${invokePath}?options=${propertyLoaderUid}&loader=${resolvedUse}&cache`;
     } catch (e) {
       throw new Error(e);
     }
