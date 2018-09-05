@@ -4,6 +4,6 @@
  *
  * This file should use only with internal mechanisms.
  */
-const invokeLoader = require(`invoke-loader`);
+var invokeLoader = require(`invoke-loader`);
 
 module.exports = invokeLoader;
