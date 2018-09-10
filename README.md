@@ -28,9 +28,7 @@ You are not limited to a way to describe options and nested loaders.
         {
           loader : `markdown-feat-react-loader`,
           options: {
-            replace(code) {
-              return code.replace('debugger;', '')
-            },
+            config: require.resolve(`./react-markdown.config.js`),
             importImages: true,
           }
         },
@@ -41,21 +39,80 @@ You are not limited to a way to describe options and nested loaders.
           },
         },
       ],
+      headings: [
+        {
+          loader: 'skeleton-loader',
+          options: {
+            procedure: function customProcedure(ast) {
+              /* ... */
+            }
+          }
+        }
+      ]
     },
   }
 }
 ```
 
-Notice
+Will export the following structure:
+
+```js
+{
+  attributes: {/* Markdown attributes */},
+  Component: function(...) {/* React component */}
+}
+```
+
+Distant resources
 --
 
-If you are import a resource from the outside the directory where _node_modules_ have placed, resolve loaders absolute paths.
+If you are importing a resource from the outside the directory where *node_modules* have placed, specify loaders absolute paths by using `require.resolve`.
 
 ```js
 [
   require.resolve(`json-loader`),
   require.resolve(`yaml-loader`)
 ]
+```
+
+This is because, on the nested level, the paths to the loaders will be resolved relative to the directory in which your file is located.
+
+Inside itself
+--
+
+You can specify as nested loader the same `complex-loader`.
+
+```js
+{
+  test: /\.png/,
+  exclude: /node_modules/,
+  use: {
+    loader : `complex-loader`,
+    options: {
+      deeper: {
+        loader: `complex-loader`,
+        options: {
+          and: {
+            loader: `complex-loader`,
+            options: {
+              deeper: 'url-loader'
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// Will give:
+/*
+{
+  deeper: {
+    and: {
+      deeper: 'path/to/file.png'
+    }
+  }
+}
+*/
 ```
 
 Author and license
