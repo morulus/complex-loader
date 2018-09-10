@@ -59,7 +59,7 @@ console.log(readme)
 Motivation
 --
 
-There is another similar loader called [combine-loader](https://github.com/elliottsj/combine-loader). But it allows you to specify loaders only in a string format. The point in creating `complex-loader` is to support to defining loaders using javascript objects. This means that you can use functions, arrays, objects, and any others javascript entities.
+There is another similar loader called [combine-loader](https://github.com/elliottsj/combine-loader). But it allows you to specify loaders only in a string format. The reason for creating `complex-loader` was the support of defining loaders using javascript objects. This means that you can use functions, arrays, objects, and any others javascript entities.
 
 Distant resources
 --
