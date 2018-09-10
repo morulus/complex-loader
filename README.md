@@ -5,8 +5,6 @@ complex-loader
 
 Combine results from multiple loaders into one object.
 
-You are not limited to a way to describe options and nested loaders.
-
 ```js
 {
   test: /\.md$/,
@@ -38,31 +36,30 @@ You are not limited to a way to describe options and nested loaders.
             onlyBody: true,
           },
         },
-      ],
-      headings: [
-        {
-          loader: 'skeleton-loader',
-          options: {
-            procedure: function customProcedure(ast) {
-              /* ... */
-            }
-          }
-        }
       ]
     },
   }
 }
 ```
 
-Will export the following structure:
+Import all desired data about file by one import.
 
 ```js
+import readme from 'readme.md'
+
+console.log(readme)
+/*
 {
-  attributes,
-  Component,
-  headings,
+  attributes: {...},
+  Component: function()
 }
+*/
 ```
+
+Motivation
+--
+
+There is another similar loader called [combine-loader](https://github.com/elliottsj/combine-loader). But it allows you to specify loaders only in a string format. The point in creating `complex-loader` is to support to defining loaders using javascript objects. This means that you can use functions, arrays, objects, and any others javascript entities.
 
 Distant resources
 --
