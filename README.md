@@ -58,8 +58,9 @@ Will export the following structure:
 
 ```js
 {
-  attributes: {/* Markdown attributes */},
-  Component: function(...) {/* React component */}
+  attributes,
+  Component,
+  headings,
 }
 ```
 
