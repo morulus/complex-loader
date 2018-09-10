@@ -75,7 +75,7 @@ If you are importing a resource from the outside the directory where *node_modul
 
 This is because, on the nested level, the paths to the loaders will be resolved relative to the directory in which your file is located.
 
-Inside itself
+Self-nesting
 --
 
 You can specify as nested loader the same `complex-loader`.
