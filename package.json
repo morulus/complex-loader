@@ -35,8 +35,6 @@
   "scripts": {
     "test": "jest --coverage",
     "build": "babel src/ --out-dir ./lib",
-    "start": "./bin/start-page.sh",
-    "publishgp": "./bin/build-page.sh && gh-pages -d ghpage/dist",
     "relink": "while read in; do npm link \"$in\"; done < .linked",
     "prepublishOnly": "jest --coverage && npm run build"
   },
