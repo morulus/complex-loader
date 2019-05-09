@@ -1,6 +1,6 @@
 {
   "name": "complex-loader",
-  "version": "0.1.5",
+  "version": "0.2.0-beta",
   "description": "Webpack complex loader",
   "main": "lib/index.js",
   "dependencies": {
