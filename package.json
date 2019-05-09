@@ -4,7 +4,6 @@
   "description": "Webpack complex loader",
   "main": "lib/index.js",
   "dependencies": {
-    "babel-core": "^6.26.3",
     "invoke-loader": "^0.1.0",
     "loader-utils": "^1.1.0",
     "lodash.map": "^4.6.0",
@@ -24,13 +23,12 @@
     "multiple"
   ],
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-jest": "^22.4.3",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-jest": "^24.8.0",
     "babel-loader": "^7.1.4",
-    "babel-plugin-transform-es2015-spread": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "jest": "^23.6.0"
+    "jest": "^24.8.0"
   },
   "scripts": {
     "test": "jest --coverage",
