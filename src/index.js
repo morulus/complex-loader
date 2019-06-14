@@ -2,9 +2,10 @@ const loaderUtils = require(`loader-utils`);
 const mapValues = require(`lodash.mapvalues`);
 const map = require(`lodash.map`);
 const memoize = require(`lodash.memoize`);
-
 const normalizeLoader = require(`./normalizeLoader`);
 const querifyLoader = require(`./querifyLoader`);
+const fixWinOsPathSep = require(`./fixWinOsPathSep`);
+
 /**
  * Convert objective use definitions to string query. I use memoize function
  * for performance reasons. Practically this transformation should be
@@ -34,7 +35,10 @@ module.exports.pitch = function richLoader() {
     const queries = Reflect.apply(shapeToQueries, this, [shape]);
     const output = map(
       queries,
-      (query, key) => `module.exports[${JSON.stringify(key)}]=require('!${query}!${this.resourcePath}');`
+      (query, key) => {
+        const webpackStyleQuery = `${query}!${fixWinOsPathSep(this.resourcePath)}`;
+        return `module.exports[${JSON.stringify(key)}]=require('!${webpackStyleQuery}');`;
+      }
     );
 
     return `module.exports = {};${output.join(`\n`)}`;
