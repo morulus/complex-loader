@@ -1,28 +1,7 @@
 const uuid4 = require(`uuid4`);
 const objectHash = require(`object-hash`);
 const resolve = require(`resolve`);
-
-/* DEPRECATED: I use unique values from loader I know to
-   build unique for this loader id, but if
-   you know best way to do that, make your
-   contributing. */
-/* Function getLoaderUid(loader) {
-   const uid = [];
-   if (
-   loader._module &&
-   loader._module.NormalModule &&
-   loader._module.NormalModule.issuer &&
-   loader._module.NormalModule.issuer.ContextModule &&
-   loader._module.NormalModule.issuer.ContextModule
-   ) {
-   uid.push(loader._module.NormalModule.issuer.ContextModule.debugId);
-   uid.push(loader._module.NormalModule.issuer.ContextModule.regExp);
-   } */
-
-  /* Sha1 is fastesd way to get string hash, information based on article https://medium.com/@chris_72272/what-is-the-fastest-node-js-hashing-algorithm-c15c1a0e164e*/
-/* Return sha1(uid.join(`-`));
-   } */
-
+const fixWinOsPathSep = require(`./fixWinOsPathSep`);
 const invokePath = require.resolve(`../invoke.js`);
 
 /*
@@ -48,14 +27,17 @@ module.exports = function querifyLoader(use, key) {
       const uid = uuid4();
 
       /* Since pitch execute just once for each file it's enough to create
-       * a unique key without the danger of a memory leak */
+       * a unique key without the chance of a memory leak.
+       *  */
       const propertyLoaderUid = `${uid}/${key}/${loader}/${objectHash(options)}`;
 
       require.cache[propertyLoaderUid] = {
         exports: options
       };
 
-      return `${invokePath}?options=${propertyLoaderUid}&loader=${resolvedUse}&cache`;
+      /* InvokePath & resolvedUse shouldn't have Windows-style path separators in according
+      * to the issue https://github.com/morulus/complex-loader/issues/1 */
+      return `${fixWinOsPathSep(invokePath)}?options=${propertyLoaderUid}&loader=${fixWinOsPathSep(resolvedUse)}&cache`;
     } catch (e) {
       throw new Error(e);
     }
